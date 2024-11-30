@@ -23,9 +23,14 @@ plblock_speed = 8
 # ПАРАМЕТРЫ МЯЧИКА
 ball_r = 40
 ball = pygame.Rect(screen_w // 2 - ball_r // 2, screen_h - ball_r - plblock_h - 60, ball_r, ball_r)
-ball_speed = 4
+ball_speed = 6
 dir_x = 1  # НАПРАВЛЕНИЕ ДВИЖЕНИЯ
 dir_y = -1  # ИЗМЕНЕНИЕ НАПРАВЛЕНИЯ ДВИЖЕНИЯ
+
+#ПАРАМЕТРЫ РАБОЧИХ БЛОКОВ
+class Wball:
+    def __init__(self):
+
 
 # ЗАДАЕМ МОМЕНТ ВЫКЛЮЧЕНИЯ ПРОГРАМЫ
 while True:
@@ -44,9 +49,9 @@ while True:
     # ЗАДАЕМ ДВИЖЕНИЕ ШАРИКА
     ball.x += ball_speed * dir_x
     ball.y += ball_speed * dir_y
-    if screen_w - ball_r < ball.x:
+    if screen_w - ball_r < ball.x or ball.x < 0:
         dir_x = - dir_x
-    if screen_h - ball_r < ball.y:
+    if screen_h - ball_r < ball.y or ball.y < 0:
         dir_y = - dir_y
 
     # ОПРЕДЕЛЯЕМ СТОЛКНОВЕНИЕ С ПЛАТФОРМОЙ
